@@ -37,6 +37,7 @@ public class Program
         finally
         {
             Console.WriteLine("App stops..");
+            Console.ReadKey();
         }
     }
 }
