@@ -2,31 +2,42 @@
 
 namespace GeometricFiguresViewer.Settings
 {
-    // ПЕРЕИМЕНОВАТЬ
-    internal class CheckInputService
+    /// <summary>
+    /// Класс пользовательского интерфейса
+    /// </summary>
+    internal class UserInterfaceService
     {
-        // вынос литералов куда-нибудь?
         private readonly string _titleMessage = 
                 $"Please, choose figure:" +
                 $"\n- {nameof(Square)} (press \"{(int)Figures.Square}\")" +
                 $"\n- {nameof(Rectangle)} (press \"{(int)Figures.Rectangle}\")" +
                 $"\n- {nameof(Triangle)} (press \"{(int)Figures.Triangle}\")" +
-                $"\n- {nameof(Circle)} (press \"{(int)Figures.Circle}\")";
+                $"\n- {nameof(Circle)} (press \"{(int)Figures.Circle}\")" +
+                $"\n====================================================";
 
         private readonly string _repeatMessage = "Wrong key. Please, try again.. Attempts: ";
-        private readonly string _errorMessage = "Too many attempts.";
+        private readonly string _errorMessage = "\nToo many attempts.";
         private int Attempts = 3;
         private bool IsContinue = false;
         public int FigureKey { get; private set; }
 
-
-        public bool CheckFigureKey()
+        /// <summary>
+        /// Метод ввода ключа геометрической фигуры
+        /// </summary>
+        /// <returns>
+        /// true - 
+        /// false - 
+        /// </returns>
+        public bool InputFigureKey()
         {
             GetFigureKey();
 
             return IsContinue;
         }
 
+        /// <summary>
+        /// Метод получения ключа геометрической фигуры
+        /// </summary>
         private void GetFigureKey()
         {
             Console.WriteLine(_titleMessage);
@@ -41,9 +52,18 @@ namespace GeometricFiguresViewer.Settings
             }
 
             if (Attempts == 0)
-                Console.WriteLine(_errorMessage); // поменять на исключение? или под каждый вид сделать свой
+                throw new ArgumentException(_errorMessage);
         }
 
+        /// <summary>
+        /// Метод проверки ключа геометрической фигуры
+        /// </summary>
+        /// <param name="figureKey">Ключ геометрической 
+        /// фигуры, тип string?</param>
+        /// <returns>
+        /// true - ключ корректный (присутствует в списке фигур)
+        /// false - ключ некорректный (не присутствует в списке фигур)
+        /// </returns>
         private bool IsCorrectFigureKey(string? figureKey)
         {
             if (string.IsNullOrEmpty(figureKey)

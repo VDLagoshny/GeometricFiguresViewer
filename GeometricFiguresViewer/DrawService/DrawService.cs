@@ -15,6 +15,8 @@
             if (chars.Length == 0)
                 throw new ArgumentException("Output array is empty");
 
+            Console.WriteLine("\n\n\n");
+
             foreach (var pixel in chars)
             {
                 Console.Write(pixel);
