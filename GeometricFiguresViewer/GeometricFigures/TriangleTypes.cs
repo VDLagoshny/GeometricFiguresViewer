@@ -1,4 +1,4 @@
-﻿namespace GeometricFiguresViewer.Figures
+﻿namespace GeometricFiguresViewer.GeometricFigures
 {
     internal enum TriangleTypes
     {

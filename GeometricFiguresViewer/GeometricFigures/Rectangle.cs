@@ -1,4 +1,6 @@
-﻿namespace GeometricFiguresViewer.Figures
+﻿using GeometricFiguresViewer.Settings;
+
+namespace GeometricFiguresViewer.GeometricFigures
 {
     internal sealed class Rectangle: IFigure
     {
@@ -14,18 +16,7 @@
         }
 
 
-
-        public long GetPerimeter()
-        {
-            throw new NotImplementedException();
-        }
-
-        public long GetSquare()
-        {
-            throw new NotImplementedException();
-        }
-
-        public char[] GetGraphicForm()
+        public char[] GetGraphicForm(ConsoleSettings consoleSettings)
         {
             throw new NotImplementedException();
         }
