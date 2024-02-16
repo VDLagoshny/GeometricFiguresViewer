@@ -10,12 +10,11 @@ public class Program
         try
         {
             var uiService = new UserInterfaceService();
-            if (!uiService.InputFigureKey())
-                throw new ArgumentException("Input key is wrong ..");
+            var figureKey = uiService.GetFigureKey();
 
             var services = new ServiceCollection()
                 .AddSingleton(new ConsoleSettings())
-                .RegisterFigure(uiService.FigureKey)
+                .RegisterFigure(figureKey)
                 .AddSingleton<IDrawService, DrawService>()
                 .AddSingleton<IGraphicService, GraphicService>();
             var serviceProvider = services.BuildServiceProvider();

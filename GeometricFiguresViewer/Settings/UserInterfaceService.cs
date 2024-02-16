@@ -8,37 +8,21 @@ namespace GeometricFiguresViewer.Settings
     internal class UserInterfaceService
     {
         private readonly string _titleMessage = 
-                $"Please, choose figure:" +
+                $"Please, select figure:" +
                 $"\n- {nameof(Square)} (press \"{(int)Figures.Square}\")" +
                 $"\n- {nameof(Rectangle)} (press \"{(int)Figures.Rectangle}\")" +
-                $"\n- {nameof(Triangle)} (press \"{(int)Figures.Triangle}\")" +
                 $"\n- {nameof(Circle)} (press \"{(int)Figures.Circle}\")" +
                 $"\n====================================================";
 
         private readonly string _repeatMessage = "Wrong key. Please, try again.. Attempts: ";
         private readonly string _errorMessage = "\nToo many attempts.";
-        private int Attempts = 3;
-        private bool IsContinue = false;
-        public int FigureKey { get; private set; }
-
-        /// <summary>
-        /// Метод ввода ключа геометрической фигуры
-        /// </summary>
-        /// <returns>
-        /// true - 
-        /// false - 
-        /// </returns>
-        public bool InputFigureKey()
-        {
-            GetFigureKey();
-
-            return IsContinue;
-        }
+        private int Attempts { get; set; } = 3;
+        private int FigureKey { get; set; }
 
         /// <summary>
         /// Метод получения ключа геометрической фигуры
         /// </summary>
-        private void GetFigureKey()
+        public int GetFigureKey()
         {
             Console.WriteLine(_titleMessage);
 
@@ -53,6 +37,8 @@ namespace GeometricFiguresViewer.Settings
 
             if (Attempts == 0)
                 throw new ArgumentException(_errorMessage);
+
+            return FigureKey;
         }
 
         /// <summary>
@@ -75,12 +61,11 @@ namespace GeometricFiguresViewer.Settings
 
             if (!(key == (int)Figures.Square)
                 & !(key == (int)Figures.Rectangle)
-                & !(key == (int)Figures.Triangle)
                 & !(key == (int)Figures.Circle))
                 return false;
 
             FigureKey = key;
-            return IsContinue = true;
+            return true;
         }
     }
 }
